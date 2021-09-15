@@ -1,0 +1,9 @@
+./src/main/Main.java
+./src/representation/Variable.java
+./src/representation/BooleanVariable.java
+./src/representation/DifferenceConstraint.java
+./src/representation/BinaryTuple.java
+./src/representation/Constraint.java
+./src/representation/BinaryExtensionConstraint.java
+./src/representation/Implication.java
+./src/examples/HouseExample.java

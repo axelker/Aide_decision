@@ -1,0 +1,3 @@
+javac -cp .:representationtests.jar:solvertests.jar -d build src/representation/*.java src/main/*.java src/examples/*.java src/solvers/*.java
+
+java -cp build:representationtests.jar:solvertests.jar main.Main
