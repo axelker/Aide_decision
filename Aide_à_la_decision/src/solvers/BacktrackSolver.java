@@ -13,6 +13,7 @@ public class BacktrackSolver extends AbstractSolver {
 
     }
 
+    //Renvoi une solution sous forme de map ou Null 
     @Override
     public Map<Variable,Object>solve()
     {
