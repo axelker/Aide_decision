@@ -20,7 +20,7 @@ public class BacktrackSolver extends AbstractSolver {
         // une hashmap vide qui permettras de stocker la solution 
         Map<Variable,Object> N = new HashMap<>();
         //linkedliste ordonné qui copie la liste de variable
-        LinkedList<Variable>v = new LinkedList<>(super.variable);
+        LinkedList<Variable>v = new LinkedList<>(this.variable);
         
        return backtrack(N,v);
     }
@@ -28,7 +28,7 @@ public class BacktrackSolver extends AbstractSolver {
     public Map<Variable,Object>backtrack(Map<Variable,Object>I,LinkedList<Variable>v)
     {
         //SI la liste de variables est vide retourner la solution
-        if(v.size()==0)
+        if(v.isEmpty())
         {
             return I;
         }
@@ -45,8 +45,8 @@ public class BacktrackSolver extends AbstractSolver {
             // Test si la hashmap
             if(this.isConsistent(N))
             {
-                Map<Variable,Object> R = new HashMap<>(backtrack(N,v));
-                if(!R.equals(null))
+                Map<Variable,Object> R = backtrack(N,v);
+                if(!(R==null))
                 {
                     return R;
                 }

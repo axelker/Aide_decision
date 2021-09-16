@@ -52,6 +52,7 @@ public class BinaryExtensionConstraint implements Constraint{
             //Parcours du tuple pour tester si les valeurs correspondent au moin à un couple de valeur
             for(BinaryTuple tmp : this.tuple)
             {
+                // test que le couple correspondant au valeur des variables corresponds au valeur d'un couple de la map
                 if(Nom_map.get(v1).equals(tmp.getv1()) && Nom_map.get(v2).equals(tmp.getv2()))
                 {
                     return true;

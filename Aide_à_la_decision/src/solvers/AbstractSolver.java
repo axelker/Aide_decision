@@ -17,7 +17,7 @@ public abstract class AbstractSolver implements Solver {
 
     public boolean isConsistent(Map<Variable,Object>map)
     {
-        //test si les contraintes contiens les variables de la liste
+        //test si les contraintes contiene les variables de la liste
         for(Constraint c: this.contraint)
         {
             if(map.keySet().containsAll(c.getScope()))
@@ -28,12 +28,12 @@ public abstract class AbstractSolver implements Solver {
                     return false;
                 }
             }
-            // SI non contenu stoper directement
+            /*// SI non contenu stopper directement
             else {
                 return false;
-            }
+            }*/
         }
-        //VAriable respect les contrainte 
+        //Variable respect les contrainte 
         return true;
     } 
 
