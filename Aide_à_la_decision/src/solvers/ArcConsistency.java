@@ -74,7 +74,7 @@ public class ArcConsistency {
     }
 
 
-    public boolean Revise(Variable v1,Set<Object> domaine1,Variable v2,Set<Object> domaine2)
+    public boolean revise(Variable v1,Set<Object> domaine1,Variable v2,Set<Object> domaine2)
     {
         boolean del = false;
          // Nouvelle map pour effectuer le test de satisfaction 
