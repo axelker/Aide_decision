@@ -79,6 +79,7 @@ public class ArcConsistency {
         boolean del = false;
          // Nouvelle map pour effectuer le test de satisfaction 
          Map<Variable,Object> m = new HashMap<>();
+         Set<Object>domaineRemove = new HashSet<>();
 
         //Parcour du domaine de v
         for(Object d1 : domaine1)
@@ -118,10 +119,13 @@ public class ArcConsistency {
             }
             if(viable==false)
             {
-                domaine1.remove(d1);
+                //Ajouter les domaines qui vont etre supprimer à la liste adequate
+                domaineRemove.add(d1);
                 del=true;
             }
         }
+        //Supprimer toutes les valeurs du domaine non viable
+        domaine1.removeAll(domaineRemove);
 
         return del;
     }
