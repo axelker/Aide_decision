@@ -31,6 +31,10 @@ public class Main{
         ok = ok && ArcConsistencyTests.testRevise();
         //ok = ok && ArcConsistencyTests.testAC1();
         ok = ok && BasicActionTests.testIsApplicable();
+        ok = ok && BasicActionTests.testSuccessor();
+        ok = ok && BasicActionTests.testGetCost();
+
+
 
 
 
