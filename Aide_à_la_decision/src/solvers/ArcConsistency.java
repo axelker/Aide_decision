@@ -34,8 +34,8 @@ public class ArcConsistency {
         //Parcourir les variable de la map 
         for(Variable x : map.keySet())
         {
-            //Initialisation d'un nouveau set domaine qui permettras d'ajouter les valeur du domaine satisfaisante selon la contraintes
-            Set<Object> new_domaine = new HashSet<>();
+            //Initialisation d'un nouveau set domaine qui permettras d'ajouter les valeur du domaine non satisfaisante selon la contraintes
+            Set<Object> new_domaine_remove = new HashSet<>();
             Set<Object>domaine = map.get(x); // Recupérer le domaine de la variable x 
             for(Object d : domaine) // Parcourir les valeurs de ce domaine
             {
@@ -44,21 +44,21 @@ public class ArcConsistency {
                 m.put(x,d);
                 for(Constraint c : this.contraint) 
                 {
-                    //SI contrainte unaire car une variable au sein de la contrainte et la variable x est celle contenu dans la contrainte
+                    //SI contrainte unaire car une variable au sein de la contrainte et que la variable x est celle contenu dans la contrainte
                     if(c.getScope().size()==1 && c.getScope().contains(x))
                     {
-                        //Test si satisfaisant si oui ajouter la valeur du domaine à notre nouvelle liste
-                        if(c.isSatisfiedBy(m))
+                        //Tester si la contrainte n'est pas satisfaite alors ajouter la valeur du domaine pour la supprimer par la suite de la map
+                        if(!c.isSatisfiedBy(m))
                         {
-                            new_domaine.add(d);
+                            new_domaine_remove.add(d);
                         }
                     }
                 }
                 
                 
             }
-            // modifier le domaine de la variable x 
-            map.put(x,new_domaine);
+            // supprimer les valeurs des domaines ne satisfaisant pas les contraintes
+            map.get(x).removeAll(new_domaine_remove);
                       
             
         }
@@ -138,9 +138,9 @@ public class ArcConsistency {
         {
             return false;
         }
-        boolean change=false;
+        boolean change;
         do {
-            
+            change=false;
             for(Variable v1 : map.keySet())
             {
                 for(Variable v2 : map.keySet())
