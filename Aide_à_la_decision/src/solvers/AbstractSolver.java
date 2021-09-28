@@ -28,12 +28,9 @@ public abstract class AbstractSolver implements Solver {
                     return false;
                 }
             }
-            /*// SI non contenu stopper directement
-            else {
-                return false;
-            }*/
+            
         }
-        //Variable respect les contrainte 
+        //Toute les Variables respect les contraintes
         return true;
     } 
 

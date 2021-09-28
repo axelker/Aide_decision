@@ -54,10 +54,11 @@ public class ArcConsistency {
                         }
                     }
                 }
-                // modifier le domaine de la variable x 
-                map.put(x,new_domaine);
+                
                 
             }
+            // modifier le domaine de la variable x 
+            map.put(x,new_domaine);
                       
             
         }
@@ -95,7 +96,6 @@ public class ArcConsistency {
                 boolean toutSatisfait = true;
                 for(Constraint c : this.contraint)
                 {
-                    
                     //Test si c'est une contrainte binaire et les variable son contenu dedans
                     if(c.getScope().size()==2 && c.getScope().contains(v1) && c.getScope().contains(v2))
                     {
@@ -112,12 +112,13 @@ public class ArcConsistency {
 
                 }
                 //SI tout est satisfait alors la valeur du domaine est viable
-                if(toutSatisfait==true) {
+                if(toutSatisfait) {
                     viable=true;
                     break;
                 }
             }
-            if(viable==false)
+            //Valeur non viable
+            if(!viable)
             {
                 //Ajouter les domaines qui vont etre supprimer à la liste adequate
                 domaineRemove.add(d1);
@@ -129,5 +130,47 @@ public class ArcConsistency {
 
         return del;
     }
+
+
+    public boolean ac1(Map<Variable,Set<Object>>map)
+    {
+        if(!enforceNodeConsistency(map))
+        {
+            return false;
+        }
+        boolean change=false;
+        do {
+            
+            for(Variable v1 : map.keySet())
+            {
+                for(Variable v2 : map.keySet())
+                {
+                    if(!v1.equals(v2))
+                    {
+                        if(revise(v1,map.get(v1),v2,map.get(v2)))
+                        {
+                            change=true;
+                        }
+                    }
+                }
+            }
+        }while(change);
+
+        for(Variable x : map.keySet())
+        {
+            if(map.get(x).isEmpty())
+            {
+                return false;
+            }
+        }
+        return true;
+
+        
+    }
+
+
+
+
+
 
 }

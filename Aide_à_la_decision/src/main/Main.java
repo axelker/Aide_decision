@@ -3,6 +3,8 @@ import representationtests.*;
 import solvertests.*;
 import solvers.*;
 import representation.*;
+import planning.*;
+import planningtests.*;
 import java.util.*;
 
 
@@ -25,6 +27,14 @@ public class Main{
         ok = ok && BinaryExtensionConstraintTests.testIsSatisfiedBy();
         ok = ok && AbstractSolverTests.testIsConsistent();
         ok = ok && BacktrackSolverTests.testSolve();
+        ok = ok && ArcConsistencyTests.testEnforceNodeConsistency();
+        ok = ok && ArcConsistencyTests.testRevise();
+        //ok = ok && ArcConsistencyTests.testAC1();
+        ok = ok && BasicActionTests.testIsApplicable();
+
+
+
+
 
         System.out.println(ok ? "All tests passed" : "At least one test failed");
         
