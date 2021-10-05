@@ -33,6 +33,8 @@ public class Main{
         ok = ok && BasicActionTests.testIsApplicable();
         ok = ok && BasicActionTests.testSuccessor();
         ok = ok && BasicActionTests.testGetCost();
+        ok = ok && BasicGoalTests.testIsSatisfiedBy();
+
 
 
 

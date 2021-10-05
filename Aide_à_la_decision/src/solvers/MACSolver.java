@@ -24,7 +24,7 @@ public class MACSolver extends AbstractSolver{
         //return MAC(N,v);
     }
 
-    /*public Map<Variable,Object> MAC(Map<Variable,Set<Object>>I,LinkedList<Variable>v)
+   /* public Map<Variable,Object> MAC(Map<Variable,Set<Object>>I,LinkedList<Variable>v)
     {
         if(v.isEmpty())
         {
@@ -36,6 +36,8 @@ public class MACSolver extends AbstractSolver{
             {
                 return null;
             }
+            Variable vi = V.pop();
+
 
         }
         return null;
