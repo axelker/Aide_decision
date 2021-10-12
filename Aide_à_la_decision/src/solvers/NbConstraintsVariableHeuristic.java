@@ -21,45 +21,48 @@ public NbConstraintsVariableHeuristic(Set<Constraint>contrainte,boolean prefere)
 @Override
 public Variable best(Set<Variable> variable,Map<Variable, Set<Object>>map){
 
-
-    Set<Variable> listeVariable = new HashSet<>(); 
-    Set<Variable> listeVariablemap = new HashSet<>(); 
+    //Map qui va stocker les variable associé à leur nombre d'occurance
     Map<Variable,Integer>NombreOccurance=new HashMap<>();
 
-    listeVariable=map.keySet();
-    //Recuperer les variables dans la map
-    for(Constraint c : this.contrainte)
+
+    for(Variable vari : variable)
     {
-        listeVariable=c.getScope();
-        //Si les variable son contenu dans la map en parametre 
-        if(listeVariablemap.containsAll(listeVariable)){
-            for(Variable vari : listeVariable)
+        //Recuperer les variables dans la map
+        for(Constraint c : this.contrainte)
+        {
+            if(c.getScope().contains(vari))
             {
+                //Si deja dans la liste on incremente sa valeur d'apparition
                 if(NombreOccurance.containsKey(vari))
                 {
                     int nombreApparitionVar=NombreOccurance.get(vari);
                     nombreApparitionVar++;
                     NombreOccurance.put(vari, nombreApparitionVar);
                 }
+                //Sinon on le rajoute avec une apparition de 1
                 else {
                     NombreOccurance.put(vari,1);
                 }
             }
         }
     }
+    
+    //Si prefere vrai alors chercher la variable ayant le plus d'occurance
     if(this.prefere)
     {
         return getMax(NombreOccurance);
     }
+    //Sinon la plus petite 
     return getMin(NombreOccurance);
 
 
 }
 
+
+//Renvoi la variable ayant la plus petit récurrance
 public Variable getMin(Map<Variable,Integer>NombreOccurance){
-    int min = 100000;
+        int min = 100000;
         Variable v = null;
-    
         for(Variable vi : NombreOccurance.keySet())
         {
             if(NombreOccurance.get(vi)<min)
@@ -74,9 +77,10 @@ public Variable getMin(Map<Variable,Integer>NombreOccurance){
 
 
 }
+//Renvoi la Variable ayant la plus grosse récurance 
 public Variable getMax(Map<Variable,Integer>NombreOccurance){
-    int max = 0;
-    
+        
+        int max = 0;
         Variable v = null;
     
         for(Variable vi : NombreOccurance.keySet())
