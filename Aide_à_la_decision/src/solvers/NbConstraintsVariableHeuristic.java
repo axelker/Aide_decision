@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.*;
-
 import representation.*;
 
 public class NbConstraintsVariableHeuristic implements VariableHeuristic {

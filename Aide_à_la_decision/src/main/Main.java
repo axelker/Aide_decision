@@ -33,6 +33,8 @@ public class Main{
         ok = ok && MACSolverTests.testSolve();
         //ok = ok && HeuristicMACSolverTests.testSolve();
         ok = ok && NbConstraintsVariableHeuristicTests.testBest();
+        ok = ok && DomainSizeVariableHeuristicTests.testBest();
+
 
         //Planning 
         ok = ok && BasicActionTests.testIsApplicable();
