@@ -40,7 +40,7 @@ public class BacktrackSolver extends AbstractSolver {
         {
             // Nouvelle hashmap contenant la solution vide ou en cours de remplissage
             Map<Variable,Object> N = new HashMap<>(I);
-            // Ajout des de la variable et son domaine
+            // Ajout de la variable et son domaine
             N.put(vi,d);
             // Test si la hashmap
             if(this.isConsistent(N))
