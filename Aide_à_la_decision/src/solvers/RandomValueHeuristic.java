@@ -16,7 +16,10 @@ public class RandomValueHeuristic implements ValueHeuristic {
     //Mélange les valeur des domaine aléatoirement au sein d'une liste
     @Override
     public List<Object> ordering(Variable v1,Set<Object>domaine) {
-
+        if(domaine.isEmpty())
+        {
+            return null;
+        }
         //Object permettant la permutation 
         Object tmp1;
         //Liste ajoutant le domaine actuelle pour le modifier 
