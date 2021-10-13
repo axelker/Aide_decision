@@ -6,5 +6,5 @@ import representation.*;
 
 public interface ValueHeuristic
 {
-    public Set<Object>ordering(Variable v1,Set<Object>domaine);
+    public List<Object> ordering(Variable v1,Set<Object>domaine);
 }

@@ -34,6 +34,8 @@ public class Main{
         //ok = ok && HeuristicMACSolverTests.testSolve();
         ok = ok && NbConstraintsVariableHeuristicTests.testBest();
         ok = ok && DomainSizeVariableHeuristicTests.testBest();
+        ok = ok && RandomValueHeuristicTests.testOrdering();
+
 
 
         //Planning 
