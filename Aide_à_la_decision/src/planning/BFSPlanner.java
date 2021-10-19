@@ -91,10 +91,14 @@ public class BFSPlanner implements Planner {
     public List<Action> getbfsplan(Map<Map<Variable,Object>,Map<Variable,Object>>father,Map<Map<Variable,Object>,Action>plan,Map<Variable,Object>goal)
     {
         List<Action>trieListe=new ArrayList<Action>();
-        while(goal!=this.etatInitial)
+        while(goal!=null)
         {
-            //AJouter l'action qui nous a mener à goal
+            //Action non null
+            if(plan.get(goal)!=null){
+                 //AJouter l'action qui nous a mener à goal
             trieListe.add(plan.get(goal));
+            }
+           
             goal=father.get(goal);  // Sortir le père du goal
         }
         Collections.reverse(trieListe); // Inverser le plan grace à la methode reverse
