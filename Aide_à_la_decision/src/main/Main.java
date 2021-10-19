@@ -25,6 +25,8 @@ public class Main{
         ok = ok && ImplicationTests.testIsSatisfiedBy();
         ok = ok && BinaryExtensionConstraintTests.testGetScope();
         ok = ok && BinaryExtensionConstraintTests.testIsSatisfiedBy();
+
+        //Solver
         ok = ok && AbstractSolverTests.testIsConsistent();
         ok = ok && BacktrackSolverTests.testSolve();
         ok = ok && ArcConsistencyTests.testEnforceNodeConsistency();
@@ -43,15 +45,18 @@ public class Main{
         ok = ok && BasicActionTests.testSuccessor();
         ok = ok && BasicActionTests.testGetCost();
         ok = ok && BasicGoalTests.testIsSatisfiedBy();
+        ok = ok && DFSPlannerTests.testPlan();
+        ok = ok && BFSPlannerTests.testPlan();
 
 
-
+        
+       
 
 
 
 
 
         System.out.println(ok ? "All tests passed" : "At least one test failed");
-        
     }
+    
 }
