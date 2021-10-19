@@ -50,7 +50,7 @@ public class BFSPlanner implements Planner {
 
     public List<Action>BFS(Map<Map<Variable,Object>,Map<Variable,Object>>father,Map<Map<Variable,Object>,Action>plan)
     {
-        Set<Map<Variable, Object>> closedliste=new HashSet<Map<Variable, Object>>();
+        List<Map<Variable, Object>> closedliste=new ArrayList<Map<Variable, Object>>();
         closedliste.add(this.etatInitial);
         LinkedList<Map<Variable, Object>> openListe=new LinkedList<Map<Variable,Object>>();
         openListe.add(this.etatInitial);
@@ -63,7 +63,7 @@ public class BFSPlanner implements Planner {
         while(!openListe.isEmpty())
         {
             Map<Variable, Object>instaciation = new HashMap<>();
-            instaciation=openListe.pollFirst();
+            instaciation=openListe.poll();
             closedliste.add(instaciation);
             for(Action a : getActions())
             {
@@ -90,14 +90,15 @@ public class BFSPlanner implements Planner {
 
     public List<Action> getbfsplan(Map<Map<Variable,Object>,Map<Variable,Object>>father,Map<Map<Variable,Object>,Action>plan,Map<Variable,Object>goal)
     {
-        LinkedList<Action>trieListe=new LinkedList<Action>();
-        while(goal!=null)
+        List<Action>trieListe=new ArrayList<Action>();
+        while(goal!=this.etatInitial)
         {
-            //AJouter l'action qui nous a mener au but ( ou next)
-            trieListe.addFirst(plan.get(goal));
-            goal=father.get(goal);  // SOrtir le père du but
+            //AJouter l'action qui nous a mener à goal
+            trieListe.add(plan.get(goal));
+            goal=father.get(goal);  // Sortir le père du goal
         }
-        return trieListe;
+        Collections.reverse(trieListe); // Inverser le plan grace à la methode reverse
+        return  trieListe;
     }
 
    
