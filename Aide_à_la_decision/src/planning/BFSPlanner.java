@@ -43,41 +43,43 @@ public class BFSPlanner implements Planner {
     public List<Action>plan()
     {
         Map<Map<Variable,Object>,Map<Variable,Object>>father=new HashMap<>();
-        father.put(this.etatInitial,null);
+        father.put(this.etatInitial,null); // pere de l'état initial est null car le départ n'a aucun père 
         Map<Map<Variable,Object>,Action>plan=new HashMap<>();
         return BFS(father,plan);
     }
 
     public List<Action>BFS(Map<Map<Variable,Object>,Map<Variable,Object>>father,Map<Map<Variable,Object>,Action>plan)
     {
+        // Création de la closed liste et l'open list avec l'état initial
         List<Map<Variable, Object>> closedliste=new ArrayList<Map<Variable, Object>>();
         closedliste.add(this.etatInitial);
         LinkedList<Map<Variable, Object>> openListe=new LinkedList<Map<Variable,Object>>();
         openListe.add(this.etatInitial);
 
+        //Si satisfaisant de l'état initial alors retourner une liste d'action vide car le but est le meme que l'état initial
         if(this.but.isSatisfiedBy(this.etatInitial))
         {
             return new ArrayList<>();
         }
 
-        while(!openListe.isEmpty())
+        while(!openListe.isEmpty()) // Tant que openList pas vide sortir des états et appliquer des actions
         {
             Map<Variable, Object>instaciation = new HashMap<>();
-            instaciation=openListe.poll();
-            closedliste.add(instaciation);
-            for(Action a : getActions())
+            instaciation=openListe.poll(); // sortir et supprimer element openlist
+            closedliste.add(instaciation); // ajouter l'élément à la closedlist
+            for(Action a : getActions()) // parcour des actions
             {
-                Map<Variable, Object>next=a.successor(instaciation);
+                Map<Variable, Object>next=a.successor(instaciation); // action applicable nous retourn l'élément suivant 
                 if(!closedliste.contains(next) && !openListe.contains(next))
                 {
-                    father.put(next,instaciation);
-                    plan.put(next,a);
-                    if(this.but.isSatisfiedBy(next))
+                    father.put(next,instaciation);// ajouter next et son père 
+                    plan.put(next,a); // ajout de next et l'action menant à celui-ci
+                    if(this.but.isSatisfiedBy(next)) // SI le but est le même que l'état next alors solution trouvé
                     {
                         return getbfsplan(father, plan, next);
                     }
                     else {
-                        openListe.add(next);
+                        openListe.add(next); // sinon ajout next à l'open pour lui appliquer des actions
                     }
                 }
             }
@@ -88,6 +90,7 @@ public class BFSPlanner implements Planner {
 
     }
 
+    //Retourn le plan d'action trié
     public List<Action> getbfsplan(Map<Map<Variable,Object>,Map<Variable,Object>>father,Map<Map<Variable,Object>,Action>plan,Map<Variable,Object>goal)
     {
         List<Action>trieListe=new ArrayList<Action>();
