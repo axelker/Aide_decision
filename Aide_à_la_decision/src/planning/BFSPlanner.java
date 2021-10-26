@@ -24,7 +24,7 @@ public class BFSPlanner implements Planner {
         this.but=but;
     }
     @Override
-    public  Map<Variable, Object> getInitialState()
+    public Map<Variable, Object> getInitialState()
     {
         return this.etatInitial;
     }
@@ -98,11 +98,11 @@ public class BFSPlanner implements Planner {
         {
             //Action non null
             if(plan.get(goal)!=null){
-                 //AJouter l'action qui nous a mener à goal
+            //AJouter l'action qui nous a mener à goal
             trieListe.add(plan.get(goal));
             }
            
-            goal=father.get(goal);  // Sortir le père du goal
+            goal=father.get(goal);  // Recuperer le père du goal
         }
         Collections.reverse(trieListe); // Inverser le plan grace à la methode reverse
         return  trieListe;
