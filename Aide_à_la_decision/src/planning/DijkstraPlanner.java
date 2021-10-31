@@ -4,6 +4,7 @@ import java.util.*;
 import representation.*;
 
 
+
 public class DijkstraPlanner implements Planner{
 
     private Map<Variable, Object>etatInitial;
