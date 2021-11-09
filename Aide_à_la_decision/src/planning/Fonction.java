@@ -2,6 +2,7 @@ package planning;
 import java.util.*;
 import representation.*;
 
+//Class permetant l'utilsiation de méthode static utile au différents planner
 
 public class Fonction {
 

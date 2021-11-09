@@ -36,22 +36,53 @@ public class Apriori extends AbstractItemsetMiner{
         
     }
 
-    /*public static SortedSet<BooleanVariable> combine(SortedSet<BooleanVariable>itemFirst,SortedSet<BooleanVariable>itemTwo){
+    //Combine deux items trié pour renvoyer un sous domaine trié de ces deux items (AB,AC=>ABC)
+    public static SortedSet<BooleanVariable> combine(SortedSet<BooleanVariable>itemFirst,SortedSet<BooleanVariable>itemTwo){
 
+        //Stockage des item sous forme de tableaux pour les parcourirs
         Object[] tabfirst =itemFirst.toArray();
         Object[] tabftwo =itemTwo.toArray();
+        //Taille set items(choix du 1 car inutile de tester les deux)
+        int size=itemFirst.size();
 
+        //Si items vide retourner null
+        if(size==0)
+        {
+            return null;
+        }
+        //Verifier que les items sont de meme taille
         if(itemFirst.size()==itemTwo.size())
         {
-            int size=itemFirst.size();
-            if(tabfirst[size-2]==tabftwo[size-2])
+           //Parcourir les items jusqu'a k-1 pour tester leur égalité
+            for(int i=0;i<size-1;i++)
             {
+                if(tabfirst[i]!=tabftwo[i])
+                {
+                    return null;
+                }
+            }
+            //Testr que le dernier items de chaque set ne sont pas égaux entre eux
+            if(tabfirst[size-1]!=tabftwo[size-1])
+            {
+                //Retourner le set combiner en castant les objet
+                SortedSet<BooleanVariable> setRetour = new TreeSet<>(AbstractItemsetMiner.COMPARATOR);
+                for(int i=0;i<size;i++)
+                {
+                    BooleanVariable b1=BooleanVariable.class.cast(tabfirst[i]);
+                    setRetour.add(b1);
+                }
+                setRetour.add(BooleanVariable.class.cast(tabftwo[size-1]));
+                return setRetour;
 
             }
+            else {
+                return null;
+            }
+            
         }
         return null;
 
-    }*/
+    }
 
 
 

@@ -55,7 +55,9 @@ public class Main{
         //Extraction 
         ok = ok && AbstractItemsetMinerTests.testFrequency();
         ok = ok && AprioriTests.testFrequentSingletons();
+        ok = ok && AprioriTests.testCombine();
 
+       
 
         
        
