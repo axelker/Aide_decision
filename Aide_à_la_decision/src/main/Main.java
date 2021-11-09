@@ -50,7 +50,7 @@ public class Main{
         ok = ok && DFSPlannerTests.testPlan();
         ok = ok && BFSPlannerTests.testPlan();
         ok = ok && DijkstraPlannerTests.testPlan();
-        //ok = ok && AStarPlannerTests.testPlan()
+        ok = ok && AStarPlannerTests.testPlan();
 
         //Extraction 
         ok = ok && AbstractItemsetMinerTests.testFrequency();
