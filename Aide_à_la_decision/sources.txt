@@ -1,3 +1,14 @@
+./src/solvers/AbstractSolver.java
+./src/solvers/DomainSizeVariableHeuristic.java
+./src/solvers/ArcConsistency.java
+./src/solvers/VariableHeuristic.java
+./src/solvers/BacktrackSolver.java
+./src/solvers/NbConstraintsVariableHeuristic.java
+./src/solvers/Solver.java
+./src/solvers/RandomValueHeuristic.java
+./src/solvers/HeuristicMACSolver.java
+./src/solvers/MACSolver.java
+./src/solvers/ValueHeuristic.java
 ./src/main/Main.java
 ./src/representation/Variable.java
 ./src/representation/BooleanVariable.java
@@ -7,3 +18,11 @@
 ./src/representation/BinaryExtensionConstraint.java
 ./src/representation/Implication.java
 ./src/examples/HouseExample.java
+./src/planning/DFSPlanner.java
+./src/planning/Planner.java
+./src/planning/BasicGoal.java
+./src/planning/DijkstraPlanner.java
+./src/planning/BasicAction.java
+./src/planning/Action.java
+./src/planning/BFSPlanner.java
+./src/planning/Goal.java

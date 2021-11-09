@@ -5,6 +5,8 @@ import solvers.*;
 import representation.*;
 import planning.*;
 import planningtests.*;
+import datamining.*;
+import dataminingtests.*;
 import java.util.*;
 
 
@@ -47,6 +49,12 @@ public class Main{
         ok = ok && BasicGoalTests.testIsSatisfiedBy();
         ok = ok && DFSPlannerTests.testPlan();
         ok = ok && BFSPlannerTests.testPlan();
+        ok = ok && DijkstraPlannerTests.testPlan();
+        //ok = ok && AStarPlannerTests.testPlan()
+
+        //Extraction 
+        ok = ok && AbstractItemsetMinerTests.testFrequency();
+        ok = ok && AprioriTests.testFrequentSingletons();
 
 
         

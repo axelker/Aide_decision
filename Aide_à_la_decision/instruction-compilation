@@ -1,3 +1,3 @@
-javac -cp .:representationtests.jar:solvertests.jar:planningtests.jar -d build src/representation/*.java src/main/*.java src/examples/*.java src/solvers/*.java src/planning/*.java
+javac -cp .:representationtests.jar:solvertests.jar:planningtests.jar:dataminingtests.jar -d build src/representation/*.java src/main/*.java src/examples/*.java src/solvers/*.java src/planning/*.java src/datamining/*.java
 
-java -cp build:representationtests.jar:solvertests.jar:planningtests.jar main.Main
+java -cp build:representationtests.jar:solvertests.jar:planningtests.jar:dataminingtests.jar main.Main

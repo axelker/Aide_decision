@@ -33,6 +33,26 @@ public class DijkstraPlanner implements Planner{
     public Goal getGoal(){
         return this.but;
     }
+    //Retoune l'état ayantle cout le plus faible
+    public Map<Variable,Object>argmin(Map<Map<Variable,Object>,Double>distance,List<Map<Variable, Object>> liste)
+    {
+        Map<Variable,Object>EtatMin=new HashMap<>();
+        Double min=Double.POSITIVE_INFINITY;
+        for(Map<Variable,Object>etat : liste)
+        {
+            if(distance.containsKey(etat))
+            {
+                if(min>distance.get(etat))
+                {
+                    min=distance.get(etat);
+                    EtatMin=etat;
+                }
+                
+            }
+        }         
+
+        return EtatMin;
+    }
 
 
     @Override
@@ -49,19 +69,57 @@ public class DijkstraPlanner implements Planner{
     }
 
     //implemter
-    public List<Action> dijkstra(Map<Map<Variable,Object>Action>plan,Map<Map<Variable,Object>Double>distance,Map<Map<Variable,Object>,Map<Variable,Object>>father)
+    public List<Action> dijkstra(Map<Map<Variable,Object>,Action>plan,Map<Map<Variable,Object>,Double>distance,Map<Map<Variable,Object>,Map<Variable,Object>>father,
+    List<Map<Variable,Object>> goals)
     {
-        //Créer openlist
+        // Création de la closed liste et l'open list avec l'état initial
+        LinkedList<Map<Variable, Object>> openListe=new LinkedList<Map<Variable,Object>>();
+        openListe.add(this.etatInitial);
+        distance.put(this.etatInitial,0.0);
 
-        /*while(!openlist.isEmpty())
+        while(!openListe.isEmpty())
         {
-            
+            Map<Variable, Object>instantiation=argmin(distance,openListe);
+            openListe.remove(instantiation);
 
+            if(this.but.isSatisfiedBy(instantiation)){
+                goals.add(instantiation);
+
+            }
+            for(Action a : getActions())
+            {
+                // action applicable nous retourn l'état suivant 
+                Map<Variable, Object>next=a.successor(instantiation); 
+
+                //Si l'état next n'est pas deja contenu dans la liste distance
+                if(!distance.containsKey(next))
+                {
+                    distance.put(next,Double.POSITIVE_INFINITY);
+                }
+                
+                if(distance.get(next)>distance.get(instantiation)+a.getCost())
+                {
+                    //Ajout de next avec sa distance réelle 
+                    distance.put(next,distance.get(instantiation)+a.getCost());
+                    father.put(next,instantiation);//Ajout next et son père
+                    plan.put(next,a);   //Ajout action menant next
+                    openListe.add(next);
+                }
+                
+               
+            }
         }
+        //Aucun but trouvé
+        if(goals.isEmpty())
+        {
+            return null;
+        }
+        return this.getdijkstraplan(father,plan,goals,distance);
+        
 
     }
 
-
+    
     //Retourn le plan d'action trié
     public List<Action> getdijkstraplan(Map<Map<Variable,Object>,Map<Variable,Object>>father,Map<Map<Variable,Object>,Action>plan,List<Map<Variable,Object>>goals,
     Map<Map<Variable,Object>,Double>distance)
