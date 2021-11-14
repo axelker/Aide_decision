@@ -4,47 +4,48 @@ import java.util.*;
 
 public class Implication implements Constraint{
 
-    private BooleanVariable i1;
-    private BooleanVariable i2;
-    private boolean vali1;
-    private boolean vali2;
+    private BooleanVariable boolVar1;
+    private BooleanVariable boolVar2;
+    private boolean valVar1;
+    private boolean valVar2;
 
     public Implication(BooleanVariable i1,boolean vali1,BooleanVariable i2,boolean vali2)
 
     {
-        this.i1=i1;
-        this.i2=i2;
-        this.vali1=vali1;
-        this.vali2=vali2;
+        this.boolVar1=i1;
+        this.boolVar2=i2;
+        this.valVar1=vali1;
+        this.valVar2=vali2;
         
     }
     public Variable getV1()
     {
-        return this.i1;
+        return this.boolVar1;
 
     }
     public Variable getV2()
     {
-        return this.i2;
+        return this.boolVar2;
 
     }
     @Override
     public Set<Variable>getScope()
     {
-        Set<Variable> d = new HashSet<>(); 
-        d.add(i1);
-        d.add(i2);
-        return d;
+        Set<Variable> setVariable = new HashSet<>(); 
+        setVariable.add(boolVar1);
+        setVariable.add(boolVar2);
+        return setVariable;
     } 
+    //Avoir tel état pour boolVar1 implique d'avoir tel état pour boolVar2, (si la valeur de boolVar1 n'est celle renseigné le test passe quel que soit la valeur de boolVar2).
     @Override
-    public boolean isSatisfiedBy(Map<Variable,Object>Nom_map)
+    public boolean isSatisfiedBy(Map<Variable,Object>verifMap)
     {
         //Test si les variable sont dans la map
-        if(Nom_map.containsKey(i1) && Nom_map.containsKey(i2))
+        if(verifMap.containsKey(boolVar1) && verifMap.containsKey(boolVar2))
         {
             //Recuper en testant si les boolean attribué au variable sont identique à ceux en parametre
-            boolean a= Nom_map.get(i1).equals(vali1);
-            boolean b =Nom_map.get(i2).equals(vali2);
+            boolean a= verifMap.get(boolVar1).equals(valVar1);
+            boolean b =verifMap.get(boolVar2).equals(valVar2);
             
         //Retourner la formule de l'implication !p V q =  p=>q
           return !a || b;

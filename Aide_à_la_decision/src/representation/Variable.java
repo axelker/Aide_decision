@@ -1,17 +1,15 @@
 package representation;
 import java.util.*;
-
-import javax.print.attribute.standard.MediaSize.Other;
-
 import java.lang.*;
 
 public class Variable {
+
     private String nom;
     private Set<Object> domaine;
 
-    public Variable(String n,Set<Object> d)
+    public Variable(String nom,Set<Object> d)
     {
-        this.nom=n;
+        this.nom=nom;
         this.domaine=d;
     }
 
@@ -24,8 +22,9 @@ public class Variable {
         return this.domaine;
     }
 
+    //Redefinition du equals par rapport au nom des variables
     @Override
-    public boolean equals(Object c)
+    public boolean equals(Object c) 
     {
         if(this==c)
         {
@@ -36,7 +35,7 @@ public class Variable {
             {
                 // Création de tmp incluant c pour convertir en type Variable pour la comparaison des nom
                 Variable tmp = (Variable)c;
-                if(tmp.getName()==this.getName())
+                if(tmp.getName().equals(this.getName()))
                 {
                     return true;
                 }
@@ -44,9 +43,12 @@ public class Variable {
         
         return false;
     }
+    
     @Override
     public int hashCode()
     {
         return this.nom.hashCode();
     }
+
+    
 }

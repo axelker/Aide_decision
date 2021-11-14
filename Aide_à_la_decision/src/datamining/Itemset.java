@@ -7,6 +7,7 @@ import representation.*;
 public class Itemset{
     private Set<BooleanVariable> items;
     private float frequence;
+    
     public Itemset(Set<BooleanVariable>items,float f)
     {
         this.items=items;

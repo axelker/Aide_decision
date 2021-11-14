@@ -22,8 +22,6 @@ public Variable best(Set<Variable> variable,Map<Variable, Set<Object>>map){
 
     //Map qui va stocker les variable associé à leur nombre d'occurance
     Map<Variable,Integer>NombreOccurance=new HashMap<>();
-
-
     for(Variable vari : variable)
     {
         //Recuperer les variables dans la map
@@ -51,7 +49,7 @@ public Variable best(Set<Variable> variable,Map<Variable, Set<Object>>map){
     {
         return getMax(NombreOccurance);
     }
-    //Sinon la plus petite 
+    //Sinon le moin d'occurance 
     return getMin(NombreOccurance);
 
 

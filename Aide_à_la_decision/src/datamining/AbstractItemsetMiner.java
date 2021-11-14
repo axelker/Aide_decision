@@ -31,9 +31,9 @@ public abstract class AbstractItemsetMiner implements ItemsetMiner {
         if(this.database.getItems().containsAll(items))
         {       
             //Parcour des items dans la liste des transactions
-                for(Set<BooleanVariable> i : listeTransaction)
+                for(Set<BooleanVariable> transaction : listeTransaction)
                 {
-                    if(i.containsAll(items)) // test si l'item est contenu dans l'itemset
+                    if(transaction.containsAll(items)) // test si l'item est contenu dans la transaction
                     {
                         frequenceRetour+=1;
                     }

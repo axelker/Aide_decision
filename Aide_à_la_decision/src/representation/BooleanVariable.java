@@ -4,14 +4,19 @@ import java.util.*;
 
 
 public class BooleanVariable extends Variable {
-    private static Set<Object> d = new HashSet<>();
+
+    private static Set<Object> domaine = new HashSet<>();
+
     static{
-        d.add(true);
-        d.add(false);
+        domaine.add(true);
+        domaine.add(false);
     }
-    public BooleanVariable(String n)   
+    public BooleanVariable(String nom)   
     {
-        super(n,BooleanVariable.d);
+        super(nom,BooleanVariable.domaine);
     }
+    
+
+    
 
 }

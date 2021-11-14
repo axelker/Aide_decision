@@ -33,7 +33,9 @@ public class RandomValueHeuristic implements ValueHeuristic {
             //Tirage d'un indice aleatoire entre le minimum i et la taille max
             int indicePermutte=this.rand.nextInt(taille - i ) + i;
             tmp1=ListeDomaine.get(i);
+            //Modifie lobjet à l'indce permute par l'objet à l'indice i
             ListeDomaine.set(i,ListeDomaine.get(indicePermutte));
+            //Modifie l'objet à l'indice tmp1 par celui à l'indice permutte
             ListeDomaine.set(indicePermutte,tmp1);
 
         }

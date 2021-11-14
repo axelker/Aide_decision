@@ -18,11 +18,11 @@ public class BacktrackSolver extends AbstractSolver {
     public Map<Variable,Object>solve()
     {
         // une hashmap vide qui permettras de stocker la solution 
-        Map<Variable,Object> N = new HashMap<>();
-        //linkedliste ordonné qui copie la liste de variable
-        LinkedList<Variable>v = new LinkedList<>(this.variable);
+        Map<Variable,Object> solution = new HashMap<>();
+        //linkedliste ordonné qui copie la liste des variables
+        LinkedList<Variable>listevar = new LinkedList<>(this.variable);
         
-       return backtrack(N,v);
+       return backtrack(solution,listevar);
     }
 
     public Map<Variable,Object>backtrack(Map<Variable,Object>I,LinkedList<Variable>v)

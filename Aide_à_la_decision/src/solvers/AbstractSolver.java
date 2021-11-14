@@ -7,6 +7,7 @@ public abstract class AbstractSolver implements Solver {
 
     protected Set<Variable>variable;
     protected Set<Constraint>contraint;
+
     public AbstractSolver(Set<Variable>variable,Set<Constraint>contraint)
     {
         this.variable=variable;
@@ -14,7 +15,7 @@ public abstract class AbstractSolver implements Solver {
     }
     
     
-
+    //Verifie que toutes les variables au sein de la map satisfons l'ensemble des contraintes
     public boolean isConsistent(Map<Variable,Object>map)
     {
         //test si les contraintes contiene les variables de la liste

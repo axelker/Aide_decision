@@ -3,6 +3,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
+//Contraintes de différence
 public class DifferenceConstraint implements Constraint{
 
     private Variable v1;
@@ -25,23 +26,28 @@ public class DifferenceConstraint implements Constraint{
 
     }
 
+    @Override
+    //Retourne les variable affecté par la contrainte
     public Set<Variable>getScope()
     {
-        Set<Variable> d = new HashSet<>(); 
-        d.add(v1);
-        d.add(v2);
-        return d;
+        Set<Variable> setVariable = new HashSet<>(); 
+        setVariable.add(v1);
+        setVariable.add(v2);
+        return setVariable;
     }
-    public boolean isSatisfiedBy(Map<Variable,Object>Nom_map)
+
+    @Override
+    //Verifie que la contraite est satisfaite par la map en parametre 
+    public boolean isSatisfiedBy(Map<Variable,Object>verifMap)
     {
         //Test si les variables sont contenu dans la map
-        if(Nom_map.containsKey(v1) && Nom_map.containsKey(v2))
+        if(verifMap.containsKey(v1) && verifMap.containsKey(v2))
         {
             // Retourner si la valeur corresponds à la différence des deux
-            return (!Nom_map.get(v1).equals(Nom_map.get(v2)));
+            return (!verifMap.get(v1).equals(verifMap.get(v2)));
            
             
         }
-       throw new IllegalArgumentException("Les variables ne sont pas égales");
+       throw new IllegalArgumentException("Les variables ne sont pas inclus dans la map");
     }
 }

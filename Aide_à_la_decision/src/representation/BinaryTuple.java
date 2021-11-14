@@ -3,23 +3,24 @@ import java.util.*;
 import java.lang.*;
 
 public class BinaryTuple {
-    private Object v1;
-    private Object v2;
+    private Object valeur1;
+    private Object valeur2;
 
-    public BinaryTuple(Object v1,Object v2)
+    public BinaryTuple(Object valeur1,Object valeur2)
     {
-        this.v1=v1;
-        this.v2=v2;
+        this.valeur1=valeur1;
+        this.valeur2=valeur2;
     }
 
-    public Object getv1()
+    public Object getvaleur1()
     {
-        return this.v1;
+        return this.valeur1;
     }
-    public Object getv2()
+    public Object getvaleur2()
     {
-        return this.v2;
+        return this.valeur2;
     }
+    //Redefinition du equals sur les valeur 
     @Override
     public boolean equals(Object c)
     {
@@ -30,9 +31,9 @@ public class BinaryTuple {
 
         else if(c instanceof BinaryTuple)
             {
-                // Création de tmp incluant c pour convertir en type Variable pour la comparaison des nom
+                // Création de tmp incluant c pour convertir en type BinaryTuple pour la comparaison des nom
                 BinaryTuple tmp = (BinaryTuple)c;
-                if(tmp.v1.equals(this.v1) && tmp.v2.equals(this.v2))
+                if(tmp.valeur1.equals(this.valeur1) && tmp.valeur2.equals(this.valeur2))
                 {
                     return true;
                 }
@@ -46,7 +47,7 @@ public class BinaryTuple {
     public int hashCode()
     {
         // Utilisation de Objects.hash pour inclure deux objet en paramètre de cette fonction et hasher les deux valeurs 
-        return Objects.hash(this.v1,this.v2);
+        return Objects.hash(this.valeur1,this.valeur2);
     }
 
 

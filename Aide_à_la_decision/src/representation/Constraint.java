@@ -6,7 +6,7 @@ import java.awt.im.spi.*;
 
 public interface Constraint{
     public Set<Variable> getScope();
-    public boolean isSatisfiedBy(Map<Variable,Object>Nom_map);
+    public boolean isSatisfiedBy(Map<Variable,Object>verifMap);
 
 
 }
