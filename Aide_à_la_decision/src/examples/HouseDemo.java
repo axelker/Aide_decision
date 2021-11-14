@@ -316,10 +316,12 @@ Map<Variable,Object>etatInitial = new HashMap<>();
      
 
   //****************************Création de l'état but à partir de la solution du solver ainsi que les valeurs des variable boolean optimale */
-  //Chercher la solution décocher le commentaire //
-  //Map<Variable,Object>etatBut = new HashMap<Variable,Object>(Solution);
+  
+  Map<Variable,Object>etatBut = new HashMap<Variable,Object>(Solution);
+  
+  //Chercher  solution spécifique décocher le commentaire //
 
-  Map<Variable,Object>etatBut = new HashMap<Variable,Object>();
+  /*Map<Variable,Object>etatBut = new HashMap<Variable,Object>();
   etatBut.put(tabVar[0][0],"Salle de bain");
   etatBut.put(tabVar[0][1],"Salle de bain2");
   etatBut.put(tabVar[0][2],"Cuisine");
@@ -328,7 +330,7 @@ Map<Variable,Object>etatInitial = new HashMap<>();
   etatBut.put(tabVar[1][2],"Chambre 1");
   etatBut.put(tabVar[2][0],"Chambre 2");
   etatBut.put(tabVar[2][1],"Chambre 3");
-  etatBut.put(tabVar[2][2],"Mezzanine");
+  etatBut.put(tabVar[2][2],"Mezzanine");*/
 
   etatBut.put(dalleCoulle,true);
   etatBut.put(solHumide,false);
