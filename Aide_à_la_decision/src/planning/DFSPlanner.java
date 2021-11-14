@@ -45,7 +45,7 @@ public class DFSPlanner implements Planner {
             for(Action a : getActions())
             {
                 Map<Variable, Object>next=a.successor(initialeState); // appliquer l'effet de l'action si elle est satisfaisante pour l'etat initiale ce qui nous renvoi le nouvel état 
-                if(!closedliste.contains(next)) // l'etat next n'est pas contenu dans dans la closedlist
+                if(next!=null && !closedliste.contains(next)) // l'etat next n'est pas contenu dans dans la closedlist
                 {
                     listeaction.add(a);   //ajouter l'action menant à l'etat next ainsi que l'état a la closed list
                     closedliste.add(next);

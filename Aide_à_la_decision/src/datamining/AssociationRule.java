@@ -36,4 +36,19 @@ public class AssociationRule {
     {
         return this.confiance;
     }
+    @Override 
+    public String toString()
+    {
+        String res="Premise : ";
+        for(BooleanVariable b : premise)
+        {
+            res+=""+b.getName()+"\n";
+        }
+        res+="Conclusion: ";
+        for(BooleanVariable c : conclusion)
+        {
+            res+=""+c.getName()+"\n";
+        }
+        return res;
+    }
 }

@@ -75,6 +75,7 @@ public class HouseExample {
 
     public boolean adjacent(int i,int j,Variable[][] tableau,Variable var)
     {
+     
       boolean valide=false;
       if(i!=0)
       {
@@ -83,12 +84,12 @@ public class HouseExample {
         {
           valide = valide || tableau[i-1][j-1].equals(var);
         }
-        if(j!=this.longueur)
+        if(j<this.longueur-1)
         {
           valide = valide || tableau[i-1][j+1].equals(var);
         }
       }
-      if(i!=this.largeur)
+      if(i<this.largeur-1)
       {
         valide = valide || tableau[i+1][j].equals(var);
     
@@ -96,16 +97,16 @@ public class HouseExample {
       if(j!=0)
       {
         valide = valide || tableau[i][j-1].equals(var);
-        if(i!=this.largeur)
+        if(i<this.largeur-1)
         {
-          valide = valide || tableau[i-1][j-1].equals(var);
+          valide = valide || tableau[i+1][j-1].equals(var);
         }
         
       }
-      if(j!=this.longueur)
+      if(j<this.longueur-1)
       {
         valide = valide || tableau[i][j+1].equals(var);
-        if(i!=largeur)
+        if(i<largeur-1)
         {
           valide = valide || tableau[i+1][j+1].equals(var);
         }
